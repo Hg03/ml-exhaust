@@ -78,14 +78,14 @@ plt.show()
 
 So after plotting, you can see like below :
 
-![[quartz/static/train_test_accuracy.png]]
+![[train_test_accuracy.png]]
 
 
 Here, as we are increasing our **max_depth** parameter to try our model learns more and more accurately, but it doesn't work like that. You can see our training accuracy is increasing as increasing **max_depth** value but testing increasing doesn't give a shit about it. This is what **overfitting** is. So don't be happy by looking good accuracy on training data because maybe it can't perform well on real world cases/test data. 
 
 **Occam's razor** in simple words states that one should not try to complicate things that can be solved in a much simpler manner. In other words, the simplest solutions are the most generalizable solutions.
 
-![[quartz/static/occam_razor.png]]
+![[occam_razor.png]]
 
 Let's move ahead to **cross validation** now,
 
@@ -94,12 +94,12 @@ So we'll have many cross validation techniques and each technique is independent
 
 As above when we are splitting dataset, we divided our data in two parts i.e. for training and testing. This approach is called **hold-out set**. Mainly we use this kind of cross validation when we have large amount of data and model inference is a time consuming process.
 
-![[quartz/static/cv.png]]
+![[cv.png]]
 # Second Approach (K Fold Cross Validation)
 
 In this technique, we split our dataset in many parts (let's say k = 5). So we divide our dataset in 5 equal portions then train our required model on k-1 folds and test on remaining last fold. Now we again shuffle the folds so that our validation fold changed again as well as testing fold, again we'll test. That's how we can build good model.
 
-![[quartz/static/kfold.png]]
+![[kfold.png]]
 
 We can do **K-Fold cross validation** using sklearn library :
 
@@ -133,7 +133,7 @@ We can use this technique with almost all dataset where we don't require much eq
 
 Now, whenever we have a dataset with some target labels means we are going to deal with classification problem in which all targets have different distribution over the data like below e.g.
 
-![[quartz/static/distribution.png]]
+![[distribution.png]]
 
 
 If we perform normal _k fold validation_ some samples only contains one class of target and would create biased model towards some class, so **stratified k fold cross validation** identifies the distribution % of classes in target and maintain that ratio in each folds also.
@@ -166,7 +166,7 @@ df.to_csv("train_folds.csv",index=False)
 
 Here, we'll use this when we have very huge data so for that we can use _k fold_ but it would be time consuming/resource eating for multiple validation and training folds. So we can create folds only once and put the one fold for hold out validation. Mainly it is used in **time series data** where we are keeping some last weeks/years of data as a hold out and train for previous of them.
 
-![[quartz/static/holdout.png]]
+![[holdout.png]]
 
 
 **Now, how we can apply validation to regression based dataset** - Yes by the way, we can apply _k fold cv_ easily for the data and even we can use _stratified k fold cv_ by firstly binning the continuous target feature in some buckets. 
